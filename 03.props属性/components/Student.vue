@@ -2,8 +2,9 @@
   <div class="demo">
     <h1>{{msg}}</h1>
     <h2>学生姓名{{name}}</h2>
-    <h2>学生年龄{{age}}</h2>
+    <h2>学生年龄{{myAge+1}}</h2>
     <h2>学生性别{{sex}}</h2>
+    <button @click="updateAge">修改年龄</button>
   </div>
 </template>
 
@@ -13,6 +14,12 @@ export default {
     data () {
         return {
             msg:'我是一个无业游民',
+            myAge:this.age
+        }
+    },
+    methods:{
+        updateAge(){
+            this.myAge++
         }
     },
     // props:['name','sex','age']  简单接受
@@ -22,7 +29,7 @@ export default {
         sex:String,
         age:Number
     } */
-
+  //接受对类型进行限制+默认值的指定
     props:{
         name:{
             type:String,
@@ -30,7 +37,7 @@ export default {
         },
         age:{
             type:Number, 
-            default:42   //默认的
+            required:true   //默认的
         },
         sex:{
             type:String,
